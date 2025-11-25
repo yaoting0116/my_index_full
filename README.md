@@ -23,17 +23,7 @@ npm install
 npm run dev
 ```
 
-Open https://my-index-full.pages.dev/
+Open  https://my-index-full.pages.dev/
 
-## Deploy
 
-- **Vercel**: connect the repo and deploy (Vite supported automatically).
-- **GitHub Pages**: if you want to deploy to GitHub Pages, install gh-pages and run `npm run deploy`.
-  Make sure `homepage` or `base` is set when using a repo subpath.
-
-## Customization
-
-- Edit `src/store.js` to set your name, bio, skills and projects.
-- Edit styles in `src/styles.css`.
-- Add your avatar to `public/avatar-placeholder.png`.
 
