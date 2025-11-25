@@ -1,0 +1,23 @@
+{
+  "name": "my_index_full",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal website scaffolded (React + Redux Toolkit + Vite)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@reduxjs/toolkit": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-redux": "latest",
+    "react-router-dom": "latest"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest"
+  }
+}

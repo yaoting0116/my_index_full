@@ -1,0 +1,147 @@
+:root{
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --text: #111827;
+}
+
+*{box-sizing:border-box}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+
+  /* 背景圖片設定 */
+  background: url('/bg.png') no-repeat center center fixed;
+  background-size: cover; /* 填滿整個畫面 */
+}
+
+.app-container{max-width:1100px;margin:24px auto;padding:20px}
+.site-header{background:var(--card);padding:12px 16px;border-radius:10px;box-shadow:0 2px 6px rgba(16,24,40,.04);margin-bottom:16px}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.avatar{width:56px;height:56px;border-radius:999px;background:#e5e7eb;object-fit:cover}
+.brand-name{margin:0;font-size:18px}
+.brand-title{font-size:13px;color:#6b7280}
+.nav a{margin-left:12px;text-decoration:none;color:var(--accent)}
+.nav a.active{font-weight:700}
+
+.main-content{margin-top:16px}
+
+.hero{background:var(--card);padding:20px;border-radius:10px}
+.lead{color:#374151}
+.skill-list{margin-top:10px}
+.skill{display:inline-block;background:#eef2ff;color:#1e40af;padding:6px 10px;border-radius:999px;margin-right:8px;font-size:13px}
+
+.cards{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+.card{flex:1 1 240px;min-width:220px;background:linear-gradient(180deg,#fff,#f8fafc);padding:14px;border-radius:8px;border:1px solid #e6eef8}
+.project-card h3{margin:0 0 8px 0}
+
+/* 增加 hero 與 preview-projects 之間的間距 */
+.hero {
+  margin-bottom: 24px; /* 上方卡片底部間距：可調為 20~40px */
+}
+
+/* 預覽專案區塊上方微調（保險雙保）*/
+.preview-projects {
+  margin-top: 8px;    /* 保險值：避免在某些瀏覽器 collapse 太靠近 */
+  padding-top: 8px;   /* 若想讓內部空間更寬鬆也可增加 padding */
+}
+
+/* 手機／小螢幕上適當縮小間距 */
+@media (max-width: 720px) {
+  .hero { margin-bottom: 16px; }
+  .preview-projects { margin-top: 6px; padding-top: 6px; }
+}
+
+
+/* 將 Selected Projects 變成白色卡片區塊，和其他 section 風格一致 */
+.preview-projects{
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(16,24,40,0.04);
+  margin-bottom: 16px;
+}
+
+/* 調整標題與 cards 的內距 */
+.preview-projects > h3{
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.preview-projects .cards{
+  margin-top: 12px; /* 保持和其他區塊一致的間距 */
+}
+
+
+.about-page, .projects-page, .contact-page{background:var(--card);padding:16px;border-radius:10px;margin-bottom:12px}
+
+.contact-form label{display:block;margin-bottom:8px}
+.contact-form input,.contact-form textarea{width:100%;padding:8px;border-radius:6px;border:1px solid #e5e7eb}
+
+.site-footer{text-align:center;margin-top:12px;color:#6b7280}
+
+/* --- fix: ensure .about-page itself is NOT a single card --- */
+.about-page {
+  background: transparent; /* 不把整個頁面當卡片 */
+  padding: 0;
+}
+
+/* Card style used for About / Skills / Thesis */
+.about-card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(16,24,40,0.04);
+  margin-bottom: 16px;
+}
+
+/* Headings inside cards */
+.about-card h2,
+.about-card h3 {
+  margin-top: 0;
+}
+
+/* Skills badges */
+.skill-badge {
+  display: inline-block;
+  background: #eef2ff;
+  color: #0f172a;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+/* category spacing */
+.skill-category {
+  margin-bottom: 12px;
+}
+.skill-category-title {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Thesis link and muted text */
+.thesis-link { color: var(--accent); text-decoration: none; }
+.thesis-link:hover { text-decoration: underline; }
+.thesis-title { font-weight: 600; margin-bottom: 6px; }
+.muted { color: #6b7280; }
+
+/* Responsive tweaks */
+@media (max-width: 720px) {
+  .about-card { padding: 12px; }
+  .skill-badge { font-size: 12px; padding: 5px 8px; }
+}
+
+
+/* responsive */
+@media (max-width:720px){
+  .header-inner{flex-direction:column;align-items:flex-start}
+  .cards{flex-direction:column}
+}
