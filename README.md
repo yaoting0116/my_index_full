@@ -23,7 +23,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173
+Open https://my-index-full.pages.dev/
 
 ## Deploy
 
