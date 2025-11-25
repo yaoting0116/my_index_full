@@ -1,6 +1,6 @@
 # my_index_full
 
-This is a scaffolded personal website template using **React + Redux Toolkit + Vite**, designed to showcase projects, skills, and academic work. It integrates **EmailJS** for the contact form and can link to external Streamlit apps for project demos.
+This is a scaffolded personal website template using **React + Redux Toolkit + Vite**, designed to showcase projects, skills, and academic work. It integrates **EmailJS** for the contact form, can link to external **Streamlit** apps for project demos, and is ready to deploy to **Cloudflare Pages** (or Vercel / GitHub Pages).
 
 ## How to use
 
