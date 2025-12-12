@@ -7,8 +7,8 @@ const profileSlice = createSlice({
     name: 'CAI,YAO-TING',
     title: 'Software Engineer',
     bio: 'I graduated with a Master’s degree in Computer Science and Engineering from National Kaohsiung University of Science and Technology. Through my academic and research experience, I gradually built a solid foundation in programming and various technological applications, especially in artificial intelligence and web development. In my future career, I hope to apply what I have learned to real-world projects, continue improving my skills, and become a reliable engineer who contributes to the team and grows together with others.',
-    skills: ['Python', 'Power BI', 'R', 'PostgreSQL','React', 'Redux', 'HTML', 'CSS'],
-    
+    skills: ['Python', 'Power BI', 'R', 'PostgreSQL', 'React', 'Redux', 'HTML', 'CSS'],
+
     // Projects
     projects: [
       {
@@ -27,9 +27,20 @@ const profileSlice = createSlice({
       }
     ],
 
-    // 新增論文/專題欄位
+    // 論文/專題欄位（已加入摘要與短檔名路徑）
     thesisTitle: 'Exploring the Impact of Cardiovascular Disease-Related Medications on Severe Mental Illness Using an Open-Source Medical Database',
-    thesisUrl: 'https://hdl.handle.net/11296/u9589n'
+    // 將你的 PDF 改名並放在 public/papers/
+    thesisUrl: '/papers/Exploring the Impact of Cardiovascular Disease-Related Medications on Severe Mental Illness Using an Open-Source Medical Database.pdf',
+
+    // 新增：摘要（會顯示在 About.jsx 的 Abstract 區塊）
+    thesisAbstract: `Background: Integrating medical data with information engineering offers important opportunities to improve clinical understanding and decision-making. This study originates from clinical observations of patients with severe mental illnesses (SMI) who commonly receive medications for symptom management. We investigate whether cardiovascular disease–related medications influence prognosis in patients with SMI—focusing on ischemic and hemorrhagic stroke outcomes.
+
+Methods: We used the publicly available MIMIC-IV 2.1 database to identify adult patients diagnosed with schizophrenia or bipolar disorder and categorized them into ischemic and hemorrhagic stroke cohorts based on hospitalization cause. Medication exposures considered included Aspirin, Warfarin, Clopidogrel, Apixaban, Rivaroxaban, Dabigatran etexilate, Cilostazol, and Enoxaparin. Statistical analyses comprised descriptive comparisons (t-test, Mann–Whitney U, Kolmogorov–Smirnov for age distributions; chi-square and Fisher’s exact tests for categorical variables), and time-to-event analyses using Kaplan–Meier curves, log-rank tests, and Cox proportional hazards models with different covariate encodings (binary usage indicator and numerical measures such as frequency, dose, and duration). ANOVA was used to assess explanatory contributions of dosage-related variables.
+
+Results: Case and control groups differed significantly in age distribution, sex ratio, event incidence, and comorbidity burden. In proportional hazards models using a binary medication-usage covariate, medication use did not show a protective effect for ischemic stroke patients. For hemorrhagic stroke patients, several medications exhibited a protective trend when analyzed with the binary indicator. Numerical covariates (usage frequency, dose, duration) were positively correlated with stroke risk, and although they reached statistical significance in ANOVA, their additional explanatory power was limited compared with the binary usage indicator—particularly in the hemorrhagic stroke context, where the binary indicator explained a substantial portion of survival differences.
+
+Conclusions: Cardiovascular medications exert complex and clinically significant effects on stroke outcomes among patients with SMI. The binary medication-usage indicator was more explanatory for hemorrhagic stroke survival differences, whereas dosage-related variables, despite statistical significance, contributed less to overall risk modeling. These results support careful consideration of cardiovascular pharmacotherapy in psychiatric populations and provide an empirical basis for optimizing medication selection and risk assessment. The study also offers a reproducible statistical framework and a web-based resource with SQL query examples to facilitate interdisciplinary research using public medical databases.`
+
   },
   reducers: {
     setProfile(state, action) {
