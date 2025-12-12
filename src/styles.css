@@ -5,6 +5,7 @@
   --text: #111827;
 }
 
+/* Reset & base */
 *{box-sizing:border-box}
 body {
   margin: 0;
@@ -12,11 +13,12 @@ body {
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 
-  /* ­I´º¹Ï¤ù³]©w */
+  /* èƒŒæ™¯åœ– */
   background: url('/bg.png') no-repeat center center fixed;
-  background-size: cover; /* ¶ñº¡¾ã­Óµe­± */
+  background-size: cover;
 }
 
+/* App layout */
 .app-container{max-width:1100px;margin:24px auto;padding:20px}
 .site-header{background:var(--card);padding:12px 16px;border-radius:10px;box-shadow:0 2px 6px rgba(16,24,40,.04);margin-bottom:16px}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -38,25 +40,24 @@ body {
 .card{flex:1 1 240px;min-width:220px;background:linear-gradient(180deg,#fff,#f8fafc);padding:14px;border-radius:8px;border:1px solid #e6eef8}
 .project-card h3{margin:0 0 8px 0}
 
-/* ¼W¥[ hero »P preview-projects ¤§¶¡ªº¶¡¶Z */
+/* hero spacing tweaks */
 .hero {
-  margin-bottom: 24px; /* ¤W¤è¥d¤ù©³³¡¶¡¶Z¡G¥i½Õ¬° 20~40px */
+  margin-bottom: 24px;
 }
 
-/* ¹wÄı±M®×°Ï¶ô¤W¤è·L½Õ¡]«OÀIÂù«O¡^*/
+/* preview-projects card */
 .preview-projects {
-  margin-top: 8px;    /* «OÀI­È¡GÁ×§K¦b¬Y¨ÇÂsÄı¾¹ collapse ¤Ó¾aªñ */
-  padding-top: 8px;   /* ­Y·QÅı¤º³¡ªÅ¶¡§ó¼eÃP¤]¥i¼W¥[ padding */
+  margin-top: 8px;
+  padding-top: 8px;
 }
 
-/* ¤â¾÷¡ş¤p¿Ã¹õ¤W¾A·íÁY¤p¶¡¶Z */
+/* responsive spacing */
 @media (max-width: 720px) {
   .hero { margin-bottom: 16px; }
   .preview-projects { margin-top: 6px; padding-top: 6px; }
 }
 
-
-/* ±N Selected Projects ÅÜ¦¨¥Õ¦â¥d¤ù°Ï¶ô¡A©M¨ä¥L section ­·®æ¤@­P */
+/* preview-projects card styling */
 .preview-projects{
   background: var(--card);
   padding: 16px;
@@ -65,7 +66,7 @@ body {
   margin-bottom: 16px;
 }
 
-/* ½Õ¾ã¼ĞÃD»P cards ªº¤º¶Z */
+
 .preview-projects > h3{
   margin-top: 0;
   margin-bottom: 8px;
@@ -73,12 +74,13 @@ body {
 }
 
 .preview-projects .cards{
-  margin-top: 12px; /* «O«ù©M¨ä¥L°Ï¶ô¤@­Pªº¶¡¶Z */
+  margin-top: 12px;
 }
 
 
 .about-page, .projects-page, .contact-page{background:var(--card);padding:16px;border-radius:10px;margin-bottom:12px}
 
+/* contact form */
 .contact-form label{display:block;margin-bottom:8px}
 .contact-form input,.contact-form textarea{width:100%;padding:8px;border-radius:6px;border:1px solid #e5e7eb}
 
@@ -86,7 +88,7 @@ body {
 
 /* --- fix: ensure .about-page itself is NOT a single card --- */
 .about-page {
-  background: transparent; /* ¤£§â¾ã­Ó­¶­±·í¥d¤ù */
+  background: transparent;
   padding: 0;
 }
 
@@ -144,4 +146,98 @@ body {
 @media (max-width:720px){
   .header-inner{flex-direction:column;align-items:flex-start}
   .cards{flex-direction:column}
+}
+
+/* ---------------------------
+   Paper / Thesis block styles
+   Each 'paper-block' is a separate card-like block
+   --------------------------- */
+.paper-block {
+  background: var(--card);
+  border: 1px solid #e9eef8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.03);
+  line-height: 1.6;
+}
+
+/* Title block: larger, allow wrap & break long words/urls */
+.paper-block--title .paper-title {
+  font-size: 1rem;
+  font-weight: 600;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+/* Links block: inline link styles; make them appear as subtle buttons */
+.paper-block--links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.paper-block--links a.thesis-link {
+  text-decoration: none;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  color: var(--accent);
+  background: linear-gradient(180deg, rgba(37,99,235,0.04), rgba(37,99,235,0.02));
+}
+.paper-block--links a.thesis-link:hover {
+  text-decoration: underline;
+  box-shadow: 0 1px 3px rgba(37,99,235,0.08);
+}
+
+/* Download link variant (slightly muted) */
+.paper-block--links a[download] {
+  color: #0f172a;
+  background: transparent;
+  border: 1px solid rgba(15,23,42,0.06);
+}
+
+/* Abstract heading block: bold label with spacing */
+.paper-block--heading {
+  font-size: 1.125rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 12px;       /* èˆ‡ .paper-block--para çš„å·¦å³ padding ä¿æŒä¸€è‡´ */
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: inherit;
+}
+
+/* Paragraph blocks: each paragraph becomes its own block/card */
+.paper-block--para {
+  background: linear-gradient(180deg, #fff, #fafbff);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #f0f4fb;
+}
+.paper-block--para p {
+  margin: 0;
+  font-size: 0.96rem;
+  white-space: pre-wrap; /* ä¿ç•™æ›è¡Œèˆ‡å¤šç©ºæ ¼ */
+  color: var(--text);
+}
+
+/* Muted fallback */
+.paper-block.muted {
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+/* Small screens: tighten paddings and font sizes */
+@media (max-width: 720px) {
+  .paper-block { padding: 10px; margin-bottom: 10px; }
+  .paper-block--para { padding: 8px 10px; }
+  .paper-block--links a.thesis-link { padding: 6px 10px; font-size: 0.9rem; }
 }
