@@ -28,6 +28,24 @@ export default function About() {
 
   const thesisTitle = profile.thesisTitle || profile.paperTitle || ''
   const thesisUrl = profile.thesisUrl || profile.paperUrl || ''
+  const thesisAbstract = profile.thesisAbstract || ''
+
+  // Split abstract into paragraphs by double-newline; trim to avoid empty blocks
+  const abstractParas = thesisAbstract
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter((p) => p.length > 0)
+
+  // helper: if paragraph starts with "Label:" return { label, rest }, else null
+  const extractLabel = (text) => {
+    // matches: one or more words/spaces (letters, numbers, &), maybe hyphen, followed by colon and optional space
+    // examples: "Background:", "Methods:", "Study Design:", "Results:" 
+    const m = text.match(/^([A-Za-z\u00C0-\u017F0-9\-\s&]+?):\s*(.*)$/s)
+    if (m) {
+      return { label: m[1].trim(), rest: m[2].trim() }
+    }
+    return null
+  }
 
   return (
     <div className="about-page">
@@ -88,24 +106,72 @@ export default function About() {
         )}
       </section>
 
-      {/* Thesis */}
+      {/* Thesis / Paper — each piece rendered as its own 'block' */}
       <section className="about-card">
         <h3>Thesis / Paper</h3>
-        {thesisTitle ? (
-          <div>
-            <div style={{ fontWeight: 600, marginBottom: 6 }}>{thesisTitle}</div>
-            {thesisUrl ? (
-              <a className="thesis-link" href={thesisUrl} target="_blank" rel="noreferrer">
+
+        {/* Title block */}
+        <div className="paper-block paper-block--title">
+          {thesisTitle ? (
+            <div className="paper-title">{thesisTitle}</div>
+          ) : (
+            <div className="muted">No thesis/paper title provided.</div>
+          )}
+        </div>
+
+        {/* Links block */}
+        <div className="paper-block paper-block--links">
+          {thesisUrl ? (
+            <div>
+              <a
+                className="thesis-link"
+                href={thesisUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ marginRight: 12 }}
+              >
                 View paper / project
               </a>
-            ) : (
-              <div className="muted">No link provided</div>
-            )}
-          </div>
+              <a className="thesis-link" href={thesisUrl} download rel="noopener noreferrer">
+                Download
+              </a>
+            </div>
+          ) : (
+            <div className="muted">No link provided</div>
+          )}
+        </div>
+
+        {/* Abstract heading block (kept as text, we can style via CSS) */}
+        <div className="paper-block paper-block--heading">
+          <strong className="paper-heading-text">Abstract</strong>
+        </div>
+
+        {/* Each abstract paragraph as its own block; detect leading labels like "Background:" */}
+        {abstractParas.length > 0 ? (
+          abstractParas.map((para, idx) => {
+            const parsed = extractLabel(para)
+            if (parsed) {
+              // Render label bold (same class as heading) and rest of paragraph
+              return (
+                <div className="paper-block paper-block--para" key={idx}>
+                  <p style={{ margin: 0, whiteSpace: 'pre-wrap' }}>
+                    <strong className="paper-heading-text">{parsed.label}:</strong>{' '}
+                    <span>{parsed.rest}</span>
+                  </p>
+                </div>
+              )
+            } else {
+              return (
+                <div className="paper-block paper-block--para" key={idx}>
+                  <p style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{para}</p>
+                </div>
+              )
+            }
+          })
         ) : (
-          <div className="muted">
-            No thesis/paper added. To show one, add <code>thesisTitle</code> and <code>thesisUrl</code> to
-            your profile in <code>src/store.js</code>.
+          <div className="paper-block muted">
+            No abstract added. To show an abstract, add <code>thesisAbstract</code> to your profile in{' '}
+            <code>src/store.js</code>.
           </div>
         )}
       </section>
