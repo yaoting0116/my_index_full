@@ -1,0 +1,680 @@
+:root{
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --text: #111827;
+}
+
+/* Reset & base */
+*{box-sizing:border-box}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+
+  /* 背景圖 */
+  background: url('/bg.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* App layout */
+.app-container{max-width:1100px;margin:24px auto;padding:20px}
+.site-header{background:var(--card);padding:12px 16px;border-radius:10px;box-shadow:0 2px 6px rgba(16,24,40,.04);margin-bottom:16px}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.avatar{width:56px;height:56px;border-radius:999px;background:#e5e7eb;object-fit:cover}
+.brand-name{margin:0;font-size:18px}
+.brand-title{font-size:13px;color:#6b7280}
+.nav a{margin-left:12px;text-decoration:none;color:var(--accent)}
+.nav a.active{font-weight:700}
+
+.main-content{margin-top:16px}
+
+.hero{background:var(--card);padding:20px;border-radius:10px}
+.lead{color:#374151}
+.skill-list{margin-top:10px}
+.skill{display:inline-block;background:#eef2ff;color:#1e40af;padding:6px 10px;border-radius:999px;margin-right:8px;font-size:13px}
+
+.cards{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+.card{flex:1 1 240px;min-width:220px;background:linear-gradient(180deg,#fff,#f8fafc);padding:14px;border-radius:8px;border:1px solid #e6eef8}
+.project-card h3{margin:0 0 8px 0}
+
+/* hero spacing tweaks */
+.hero {
+  margin-bottom: 24px;
+}
+
+/* preview-projects card */
+.preview-projects {
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+/* responsive spacing */
+@media (max-width: 720px) {
+  .hero { margin-bottom: 16px; }
+  .preview-projects { margin-top: 6px; padding-top: 6px; }
+}
+
+/* preview-projects card styling */
+.preview-projects{
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(16,24,40,0.04);
+  margin-bottom: 16px;
+}
+
+
+.preview-projects > h3{
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.preview-projects .cards{
+  margin-top: 12px;
+}
+
+/* =========================
+   Projects page layout
+   ========================= */
+
+.projects-page .cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* 卡片在 grid 裡要撐滿欄位 */
+.projects-page .card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 手機版：一欄 */
+@media (max-width: 720px) {
+  .projects-page .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.about-page, .projects-page, .contact-page{background:var(--card);padding:16px;border-radius:10px;margin-bottom:12px}
+
+/* contact form */
+.contact-form label{display:block;margin-bottom:8px}
+.contact-form input,.contact-form textarea{width:100%;padding:8px;border-radius:6px;border:1px solid #e5e7eb}
+
+.site-footer{text-align:center;margin-top:12px;color:#6b7280}
+
+/* --- fix: ensure .about-page itself is NOT a single card --- */
+.about-page {
+  background: transparent;
+  padding: 0;
+}
+
+/* Card style used for About / Skills / Thesis */
+.about-card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(16,24,40,0.04);
+  margin-bottom: 16px;
+}
+
+/* Headings inside cards */
+.about-card h2,
+.about-card h3 {
+  margin-top: 0;
+}
+
+/* Skills badges */
+.skill-badge {
+  display: inline-block;
+  background: #eef2ff;
+  color: #0f172a;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+/* category spacing */
+.skill-category {
+  margin-bottom: 12px;
+}
+.skill-category-title {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Thesis link and muted text */
+.thesis-link { color: var(--accent); text-decoration: none; }
+.thesis-link:hover { text-decoration: underline; }
+.thesis-title { font-weight: 600; margin-bottom: 6px; }
+.muted { color: #6b7280; }
+
+/* Responsive tweaks */
+@media (max-width: 720px) {
+  .about-card { padding: 12px; }
+  .skill-badge { font-size: 12px; padding: 5px 8px; }
+}
+
+
+/* responsive */
+@media (max-width:720px){
+  .header-inner{flex-direction:column;align-items:flex-start}
+  .cards{flex-direction:column}
+}
+
+/* ---------------------------
+   Paper / Thesis block styles
+   Each 'paper-block' is a separate card-like block
+   --------------------------- */
+.paper-block {
+  background: var(--card);
+  border: 1px solid #e9eef8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.03);
+  line-height: 1.6;
+}
+
+/* Title block: larger, allow wrap & break long words/urls */
+.paper-block--title .paper-title {
+  font-size: 1rem;
+  font-weight: 600;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+/* Links block: inline link styles; make them appear as subtle buttons */
+.paper-block--links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.paper-block--links a.thesis-link {
+  text-decoration: none;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  color: var(--accent);
+  background: linear-gradient(180deg, rgba(37,99,235,0.04), rgba(37,99,235,0.02));
+}
+.paper-block--links a.thesis-link:hover {
+  text-decoration: underline;
+  box-shadow: 0 1px 3px rgba(37,99,235,0.08);
+}
+
+/* Download link variant (slightly muted) */
+.paper-block--links a[download] {
+  color: #0f172a;
+  background: transparent;
+  border: 1px solid rgba(15,23,42,0.06);
+}
+
+/* Abstract heading block: bold label with spacing */
+.paper-block--heading {
+  font-size: 1.125rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 12px;       /* 與 .paper-block--para 的左右 padding 保持一致 */
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: inherit;
+}
+
+/* Paragraph blocks: each paragraph becomes its own block/card */
+.paper-block--para {
+  background: linear-gradient(180deg, #fff, #fafbff);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #f0f4fb;
+}
+.paper-block--para p {
+  margin: 0;
+  font-size: 0.96rem;
+  white-space: pre-wrap; /* 保留換行與多空格 */
+  color: var(--text);
+}
+
+/* Muted fallback */
+.paper-block.muted {
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+/* Small screens: tighten paddings and font sizes */
+@media (max-width: 720px) {
+  .paper-block { padding: 10px; margin-bottom: 10px; }
+  .paper-block--para { padding: 8px 10px; }
+  .paper-block--links a.thesis-link { padding: 6px 10px; font-size: 0.9rem; }
+}
+
+/* Interactive Guide styles */
+.interactive-guide {
+  display: block;
+  max-width: 100%;
+}
+
+/* image wrapper (clickable) - long horizontal look */
+.interactive-image-wrapper {
+  width: 100%;
+  max-width: 900px; /* adjust as needed */
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 2px 6px rgba(16,24,40,0.04);
+}
+
+.interactive-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* chat modal */
+.chat-modal {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 340px;
+  max-width: calc(100% - 36px);
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 6px 28px rgba(16,24,40,0.2);
+  border: 1px solid rgba(14,20,40,0.04);
+  overflow: hidden;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(14,20,40,0.04);
+}
+.chat-title {
+  font-weight: 700;
+}
+.chat-close {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* body */
+.chat-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+/* bubbles */
+.chat-bubble {
+  max-width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+.chat-bubble.guide {
+  align-self: flex-start;
+  background: linear-gradient(180deg, #eef6ff, #f8fbff);
+  border: 1px solid rgba(37,99,235,0.08);
+}
+.chat-bubble.system {
+  align-self: center;
+  background: transparent;
+  color: #555;
+  font-style: italic;
+}
+.chat-bubble.user {
+  align-self: flex-end;
+  background: #edf7ec;
+  border: 1px solid rgba(34,197,94,0.08);
+}
+
+/* footer (buttons) */
+.chat-footer {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid rgba(14,20,40,0.04);
+  justify-content: flex-end;
+}
+.chat-btn {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(14,20,40,0.06);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.chat-btn--primary {
+  background: linear-gradient(180deg, rgba(37,99,235,0.1), rgba(37,99,235,0.06));
+  border-color: rgba(37,99,235,0.12);
+  color: var(--accent);
+}
+
+/* small screens adjust */
+@media (max-width: 720px) {
+  .chat-modal { width: calc(100% - 36px); right: 18px; left: 18px; bottom: 18px; }
+}
+
+/* === RPGDialogue styles (Prev appears from 3rd sentence; controls fixed bottom-right) === */
+
+.rpg-wrap {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rpg-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+/* avatar */
+.rpg-avatar {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  flex-shrink: 0;
+}
+
+/* right panel */
+.rpg-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* box */
+.rpg-box {
+  position: relative;
+  width: 100%;
+  min-height: 96px;
+  max-width: 100%;
+  padding: 12px 14px 60px; /* leave space at bottom for controls */
+  border-radius: 12px;
+  background: rgba(10,10,10,0.92);
+  border: 2px solid rgba(255,255,255,0.95);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.32);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+/* text: slightly larger on desktop */
+.rpg-text {
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Controls container (fixed bottom-right inside box) */
+.rpg-controls {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 6;
+}
+
+/* placeholder (same width as small button) to avoid layout shift when Prev not shown */
+.rpg-small-placeholder {
+  display: inline-block;
+  width: 36px;
+  height: 34px;
+}
+
+/* small buttons */
+.rpg-small-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+.rpg-small-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* inline start button (appears inside controls until started) */
+.rpg-start-inline {
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* === RPG floating arrows (both on bottom-right) === */
+
+.rpg-prev-arrow,
+.rpg-next-arrow {
+  position: absolute;
+  bottom: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  z-index: 9;
+  opacity: 0.95;
+}
+
+/* ◀ 上一句：在 ▼ 左邊 */
+.rpg-prev-arrow {
+  right: 60px;   /* 關鍵：往左推 */
+}
+
+/* ▼ 下一句：最右 */
+.rpg-next-arrow {
+  right: 14px;
+}
+
+/* 浮動動畫（完成打字後） */
+.rpg-prev-arrow.float,
+.rpg-next-arrow.float {
+  animation: rpg-float 1.1s infinite ease-in-out;
+}
+
+/* 點擊回饋 */
+.rpg-prev-arrow:active,
+.rpg-next-arrow:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+/* RPG 經典浮動 */
+@keyframes rpg-float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(6px); }
+  100% { transform: translateY(0); }
+}
+
+/* 手機微調 */
+@media (max-width: 480px) {
+  .rpg-prev-arrow { right: 46px; padding: 5px 8px; font-size: 15px; }
+  .rpg-next-arrow { right: 10px; padding: 5px 8px; font-size: 15px; }
+}
+
+
+/* tail */
+.rpg-tail {
+  position: absolute;
+  left: -10px;
+  bottom: 28px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 12px solid rgba(10,10,10,0.92);
+}
+
+/* end actions: same position (replace controls when finished) */
+.rpg-end-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 6;
+}
+
+.rpg-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.rpg-btn.primary {
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  border-color: rgba(255,255,255,0.04);
+}
+
+/* responsive: keep avatar & dialog side-by-side for most phones */
+@media (max-width: 480px) {
+  .rpg-avatar {
+    width: 128px;
+    height: 128px;
+  }
+  .rpg-start-inline, .rpg-small-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+  .rpg-box {
+    min-height: 84px;
+    padding: 10px 12px 52px;
+  }
+  .rpg-text {
+    font-size: 13px;
+  }
+  .rpg-btn { font-size: 12px; padding: 5px 8px; }
+}
+
+/* very narrow: stack vertically */
+@media (max-width: 360px) {
+  .rpg-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .rpg-avatar {
+    width: 96px;
+    height: 96px;
+  }
+  .rpg-right { width: 100%; }
+  .rpg-box {
+    width: 100%;
+    min-height: 88px;
+    padding: 10px 12px 48px;
+    align-self: stretch;
+  }
+  .rpg-start-inline { width: 100%; }
+}
+
+/* ===== 更小的手機按鈕：覆寫原本的設定 (放在檔案最末端以確保覆蓋) ===== */
+@media (max-width: 480px) {
+  /* 浮動箭頭 */
+  .rpg-prev-arrow,
+  .rpg-next-arrow {
+    padding: 4px 6px;        /* 減少內距 */
+    font-size: 14px;         /* 字體稍小 */
+    border-radius: 8px;
+    opacity: 0.98;
+  }
+  .rpg-prev-arrow { right: 44px; } /* 讓兩個按鈕靠得比較近 */
+  .rpg-next-arrow { right: 8px; }
+
+  /* 小按鈕與開始按鈕 */
+  .rpg-small-btn,
+  .rpg-start-inline,
+  .rpg-btn {
+    padding: 6px 8px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  /* 結束動作（留在本頁 / 前往）也縮小 */
+  .rpg-end-actions .rpg-btn {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+}
+
+/* 極窄螢幕再小一點 */
+@media (max-width: 360px) {
+  .rpg-prev-arrow,
+  .rpg-next-arrow {
+    padding: 3px 6px;
+    font-size: 13px;
+    border-radius: 7px;
+  }
+  .rpg-prev-arrow { right: 40px; }
+  .rpg-next-arrow { right: 6px; }
+
+  .rpg-small-btn,
+  .rpg-start-inline,
+  .rpg-btn {
+    padding: 5px 7px;
+    font-size: 12px;
+    border-radius: 7px;
+  }
+
+  .rpg-end-actions .rpg-btn {
+    padding: 5px 7px;
+    font-size: 12px;
+  }
+}
