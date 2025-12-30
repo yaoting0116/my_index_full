@@ -69,7 +69,7 @@ const profileContent = {
   // UI content（文案、圖片）— 放在 profile 內較方便共用
   introDialogues: [
     'Hello and welcome to {name}’s personal website. I’m Zoe, the site administrator.',
-    'Welcome! I’ve carefully organized this website to introduce the developer’s background and projects.',
+    'I’ve carefully organized this website to introduce the developer’s background and projects.',
     'Feel free to explore the content at your own pace, just like leisurely adventuring in an RPG world!',
     'When you’re ready, I can guide you to the full collection of the developer’s works.'
   ],
@@ -78,4 +78,5 @@ const profileContent = {
 }
 
 export default profileContent
+
 
